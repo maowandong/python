@@ -10,8 +10,9 @@ Date: 2017/04/10 10:05
 import argparse
 
 import config_load
+import log
 
-version = "1.0"
+version = "1.0.0"
 
 def arg_parse():
     """
@@ -29,7 +30,13 @@ def arg_parse():
     return options.config
 
 def main():
-    '''解析命令行参数，获取配置文件信息'''
+    """
+    主程序入口
+    """
+
+    # 初始化log
+    log.init_log("./log/spider")
+    #解析命令行参数，获取配置文件信息
     conf_name = arg_parse()
     config_load.parse_conf(conf_name)
 
